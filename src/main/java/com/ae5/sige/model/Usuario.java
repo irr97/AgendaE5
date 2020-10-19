@@ -187,6 +187,14 @@ public class Usuario {
 	public void setListaReunionesNuevas(ArrayList<Object> listaReunionesNuevas) {
 		ListaReunionesNuevas = listaReunionesNuevas;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nUsuario=" + nUsuario + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
+				+ ", Apellidos=" + Apellidos + ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo
+				+ ", Tipo=" + Tipo + ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas="
+				+ ListaReunionesNuevas + "]";
+	}
 	
 	
 	  
