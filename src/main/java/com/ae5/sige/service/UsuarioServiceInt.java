@@ -13,7 +13,7 @@ public interface UsuarioServiceInt {
 	  /**
 	   * @author ae5
 	   */
-	  Usuario findByUserDni(String nusuario);
+	  Usuario findByUsernusuario(String nusuario);
 
 	  /**
 	   * @author ae5

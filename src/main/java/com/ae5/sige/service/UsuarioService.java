@@ -16,22 +16,18 @@ import com.ae5.sige.repository.UsuarioRepositoryInt;
 
 @Service("UsuarioServiceInt")
 /**
- * @author e3corp
+ * @author ae5
  */
 @Transactional
 
 public class UsuarioService implements UsuarioServiceInt {
   /**
-   * @author e3corp
-   */
-  private static final Log log = LogFactory.getLog(UsuarioService.class);
-  /**
-   * @author e3corp
+   * @author ae5
    */
   private UsuarioRepositoryInt userRepository;
 
   /**
-   * @author e3corp
+   * @author ae5
    */
   @Autowired
 
@@ -42,52 +38,39 @@ public class UsuarioService implements UsuarioServiceInt {
   }
 
   /**
-   * @author e3corp
+   * @author ae5
    */
-  public Usuario findByUserDni(final String userDni) {
+  public Usuario findByUsernusuario(final String nusuario) {
 
-    final Optional<Usuario> user = userRepository.findOne(userDni);
+    final Optional<Usuario> user = userRepository.findOne(nusuario);
+	return user;
+    
 
-    if (user.isPresent()) {
-
-      log.debug(String.format("Read userId '{}'", userDni));
-
-      final Optional<Usuario> userDesencriptado = Utilidades.desencriptarOptionalUsuario(user);
-
-      return userDesencriptado.get();
-
-    } else {
-
-      throw new UserNotFoundException(userDni);
-
-    }
 
   }
 
   /**
-   * @author e3corp
+   * @author ae5
    */
-  public List<Usuario> findAll() {
+  public Optional<List<Usuario>> findAll() {
 
     final Optional<List<Usuario>> users = userRepository.findAll();
 
-    final List<Usuario> usersDesencrip = Utilidades.desencriptarListaUsuarios(users);
-
-    return usersDesencrip;
+    return users;
 
   }
 
   /**
-   * @author e3corp
+   * @author ae5
    */
   public void saveUsuario(final Usuario usuario) {
 
     userRepository.saveUsuario(usuario);
 
-  }
+  } 
 
   /**
-   * @author e3corp
+   * @author ae5
    */
   public void updateUsuario(final Usuario user) {
 
@@ -96,7 +79,7 @@ public class UsuarioService implements UsuarioServiceInt {
   }
 
   /**
-   * @author e3corp
+   * @author ae5
    */
   public void deleteUsuario(final String userId) {
 
@@ -105,13 +88,10 @@ public class UsuarioService implements UsuarioServiceInt {
   }
 
   @Override
-  public Usuario getUserByDniAndPassword(final String dni, final String password) {
-    // System.out.println("[SERVER] DNI recibido: " + dni);
-    // System.out.println("[SERVER] Contraseña recibida: " + password);
+  public Usuario getUserBynusuarioAndPassword(final String nusuario, final String password) {
 
-    final Usuario usuario = userRepository.findByDniAndContrasena(dni, password);
-    final Usuario usuarioDesencriptado = Utilidades.desencriptarUsuario(usuario);
-    return usuarioDesencriptado;
+    final Usuario usuario = userRepository.findByDniAndContrasena(nusuario, password);
+    return usuario;
   }
 
 }
