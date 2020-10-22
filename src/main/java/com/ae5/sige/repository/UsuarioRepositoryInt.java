@@ -46,6 +46,6 @@ public interface UsuarioRepositoryInt {
 	   * 
 	   * @author ae5
 	   */
-	  Usuario findByDniAndContrasena(String nusuario, String contrasena);
+	  Usuario findBynUsuarioAndContrasena(String nusuario, String contrasena);
 
 }

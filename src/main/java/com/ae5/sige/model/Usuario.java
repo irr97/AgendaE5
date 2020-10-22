@@ -1,89 +1,90 @@
 package com.ae5.sige.model;
 
-
-
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-
+import org.springframework.lang.NonNull;
 
 @Document(collection = "Usuarios")
 public class Usuario {
-	  /**
-	   * ID.
-	   * 
-	   * @author e3corp
-	   */
-	  @Id
-	  private String id;
-	  /**
-	   * nUsuario.
-	   * 
-	   * @author e3corp
-	   */
-	  private String nUsuario;
-	  /**
-	   * Contraseña.
-	   * 
-	   * @author e3corp
-	   */
-	  private String Contraseña;
-	  /**
-	   * Nombre.
-	   * 
-	   * @author e3corp
-	   */
-	  private String Nombre;
-	  /**
-	   * Apellidos.
-	   * 
-	   * @author e3corp
-	   */
-	  private String Apellidos;
-	  /**
-	   * DNI.
-	   * 
-	   * @author e3corp
-	   */
-	  private String DNI;
-	  /**
-	   * Telefono.
-	   * 
-	   * @author e3corp
-	   */
-	  private String Telefono;
-	  /**
-	   * Correo.
-	   * 
-	   * @author e3corp
-	   */
-	  private String Correo;
-	  /**
-	   * Tipo.
-	   * 
-	   * @author ae5
-	   */
-	  private String Tipo;
-	  /**
-	   * ListaReuniones.
-	   * 
-	   * @author ae5
-	   */
-	  private ArrayList<Object> ListaReuniones = new ArrayList<Object>();
-	  /**
-	   * ListaReunionesNuevas.
-	   * 
-	   * @author ae5
-	   */
-	  private ArrayList<Object> ListaReunionesNuevas = new ArrayList<Object>();
-	  
-	public Usuario(String id, String nusuario, String contraseña, String nombre, String apellidos, String dNI,
-			String telefono, String correo, String tipo, ArrayList<Object> listaReuniones,
+	/**
+	 * ID.
+	 * 
+	 * @author ae5
+	 */
+	@Id
+	private String id;
+	/**
+	 * nUsuario.
+	 * 
+	 * @author ae5
+	 */
+	@NonNull
+	private String nUsuario;
+	/**
+	 * Contraseña.
+	 * 
+	 * @author ae5
+	 */
+	@NonNull
+	private String Contraseña;
+	/**
+	 * Nombre.
+	 * 
+	 * @author ae5
+	 */
+	private String Nombre;
+	/**
+	 * Apellidos.
+	 * 
+	 * @author ae5
+	 */
+	private String Apellidos;
+	/**
+	 * DNI.
+	 * 
+	 * @author ae5
+	 */
+	@NonNull
+	private String DNI;
+	/**
+	 * Telefono.
+	 * 
+	 * @author ae5
+	 */
+	private String Telefono;
+	/**
+	 * Correo.
+	 * 
+	 * @author ae5
+	 */
+	private String Correo;
+	/**
+	 * Tipo.
+	 * 
+	 * @author ae5
+	 */
+	private String Tipo;
+	/**
+	 * ListaReuniones.
+	 * 
+	 * @author ae5
+	 */
+	private ArrayList<Object> ListaReuniones = new ArrayList<Object>();
+	/**
+	 * ListaReunionesNuevas.
+	 * 
+	 * @author ae5
+	 */
+	private ArrayList<Object> ListaReunionesNuevas = new ArrayList<Object>();
+
+	public Usuario(@NonNull String nusuario, @NonNull String contraseña, String nombre, String apellidos,
+			@NonNull String dNI, String telefono, String correo, String tipo, ArrayList<Object> listaReuniones,
 			ArrayList<Object> listaReunionesNuevas) {
 		super();
-		this.id = id;
+		this.id = UUID.randomUUID().toString();
 		nUsuario = nusuario;
 		Contraseña = contraseña;
 		Nombre = nombre;
@@ -97,7 +98,7 @@ public class Usuario {
 	}
 
 	public Usuario() {
-		
+
 	}
 
 	public String getId() {
@@ -189,14 +190,96 @@ public class Usuario {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Apellidos == null) ? 0 : Apellidos.hashCode());
+		result = prime * result + ((Contraseña == null) ? 0 : Contraseña.hashCode());
+		result = prime * result + ((Correo == null) ? 0 : Correo.hashCode());
+		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
+		result = prime * result + ((ListaReuniones == null) ? 0 : ListaReuniones.hashCode());
+		result = prime * result + ((ListaReunionesNuevas == null) ? 0 : ListaReunionesNuevas.hashCode());
+		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
+		result = prime * result + ((Telefono == null) ? 0 : Telefono.hashCode());
+		result = prime * result + ((Tipo == null) ? 0 : Tipo.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nUsuario == null) ? 0 : nUsuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (Apellidos == null) {
+			if (other.Apellidos != null)
+				return false;
+		} else if (!Apellidos.equals(other.Apellidos))
+			return false;
+		if (Contraseña == null) {
+			if (other.Contraseña != null)
+				return false;
+		} else if (!Contraseña.equals(other.Contraseña))
+			return false;
+		if (Correo == null) {
+			if (other.Correo != null)
+				return false;
+		} else if (!Correo.equals(other.Correo))
+			return false;
+		if (DNI == null) {
+			if (other.DNI != null)
+				return false;
+		} else if (!DNI.equals(other.DNI))
+			return false;
+		if (ListaReuniones == null) {
+			if (other.ListaReuniones != null)
+				return false;
+		} else if (!ListaReuniones.equals(other.ListaReuniones))
+			return false;
+		if (ListaReunionesNuevas == null) {
+			if (other.ListaReunionesNuevas != null)
+				return false;
+		} else if (!ListaReunionesNuevas.equals(other.ListaReunionesNuevas))
+			return false;
+		if (Nombre == null) {
+			if (other.Nombre != null)
+				return false;
+		} else if (!Nombre.equals(other.Nombre))
+			return false;
+		if (Telefono == null) {
+			if (other.Telefono != null)
+				return false;
+		} else if (!Telefono.equals(other.Telefono))
+			return false;
+		if (Tipo == null) {
+			if (other.Tipo != null)
+				return false;
+		} else if (!Tipo.equals(other.Tipo))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nUsuario == null) {
+			if (other.nUsuario != null)
+				return false;
+		} else if (!nUsuario.equals(other.nUsuario))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nUsuario=" + nUsuario + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
 				+ ", Apellidos=" + Apellidos + ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo
 				+ ", Tipo=" + Tipo + ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas="
 				+ ListaReunionesNuevas + "]";
 	}
-	
-	
-	  
-	  
+
 }
