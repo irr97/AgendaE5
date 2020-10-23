@@ -41,9 +41,9 @@ public class ReunionRepository implements ReunionRepositoryInt{
 	   */
 	  public Optional<List<Reunion>> findAll() {
 
-	    List<Reunion> users = this.mongoOperations.find(new Query(), Reunion.class);
-
-	    return Optional.ofNullable(users);
+	    List<Reunion> reuniones = this.mongoOperations.findAll(Reunion.class);
+	    System.out.println("findall");
+	    return Optional.ofNullable(reuniones);
 
 	  }
 
