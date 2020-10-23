@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { LoginComponent } from './login/login.component';
+
+
 import { ReunionesComponent } from './reuniones/reuniones.component';
 import { ReunionesPreComponent } from './reuniones-pre/reuniones-pre.component';
 
@@ -13,9 +17,11 @@ import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     ReunionesComponent,
     ReunionesPreComponent,
     MenuComponent
+
 
   ],
   imports: [
