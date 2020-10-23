@@ -3,15 +3,16 @@ package com.ae5.sige.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.ae5.sige.exception.UserNotFound;
+import com.ae5.sige.exception.UsersNotFound;
 import com.ae5.sige.model.Usuario;
 import com.ae5.sige.repository.UsuarioRepositoryInt;
+
 
 
 @Service("UsuarioServiceInt")
@@ -41,23 +42,36 @@ public class UsuarioService implements UsuarioServiceInt {
    * @author ae5
    */
   public Usuario findByUsernusuario(final String nusuario) {
-
+	
+	  
     final Optional<Usuario> user = userRepository.findOne(nusuario);
-	return user;
     
+    if (user.isPresent()) {	
+	return user.get();
+    } else {
 
+        throw new UserNotFound(nusuario);
 
+      }
+    
+    
   }
 
   /**
    * @author ae5
    */
-  public Optional<List<Usuario>> findAll() {
+  public List<Usuario> findAll() {
 
+	
     final Optional<List<Usuario>> users = userRepository.findAll();
 
-    return users;
-
+    if (users.isPresent()) {	
+    	return users.get();
+        }else {
+        	throw new UsersNotFound();
+        }
+        
+      
   }
 
   /**
@@ -81,16 +95,16 @@ public class UsuarioService implements UsuarioServiceInt {
   /**
    * @author ae5
    */
-  public void deleteUsuario(final String userId) {
+  public void deleteUsuario(final String nusuario) {
 
-    userRepository.deleteUsuario(userId);
+    userRepository.deleteUsuario(nusuario);
 
   }
 
   @Override
   public Usuario getUserBynusuarioAndPassword(final String nusuario, final String password) {
 
-    final Usuario usuario = userRepository.findByDniAndContrasena(nusuario, password);
+    final Usuario usuario = userRepository.findBynUsuarioAndContrasena(nusuario, password);
     return usuario;
   }
 

@@ -6,15 +6,22 @@ import { AppComponent } from './app.component';
 import { ReunionesComponent } from './reuniones/reuniones.component';
 import { ReunionesPreComponent } from './reuniones-pre/reuniones-pre.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ReunionesComponent,
-    ReunionesPreComponent
+    ReunionesPreComponent,
+    MenuComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

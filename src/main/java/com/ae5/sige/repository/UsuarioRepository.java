@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
 import com.ae5.sige.model.Usuario;
 
-public class UsuarioRepository {
+@Repository
+public class UsuarioRepository implements UsuarioRepositoryInt{
 	 /**
 	   * Instancia de la interfaz MongoOperations.
 	   * 
@@ -90,10 +92,10 @@ public class UsuarioRepository {
 
 	  }
 
-	  public Usuario findBynusuarioAndContrasena(final String nusuario, final String contraseña) {
-	    Usuario usuario = this.mongoOperations
-	        .findOne(new Query(Criteria.where("Usuario").is(nusuario).and("contraseña").is(contraseña)), Usuario.class);
-	    return usuario;
-	  }
+	@Override
+	public Usuario findBynUsuarioAndContrasena(String nusuario, String contrasena) {
+		Usuario usuario = this.mongoOperations.findOne(new Query(Criteria.where("Usuario").is(nusuario).and("contraseña").is(contrasena)), Usuario.class);
+		    return usuario;
+	}
 
 }

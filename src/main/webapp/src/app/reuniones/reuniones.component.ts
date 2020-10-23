@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReunionesService } from '../reuniones.service';
 
 @Component({
   selector: 'app-reuniones',
@@ -15,6 +16,10 @@ export class ReunionesComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.service.findAll()
+    .subscribe(response=>{
+      this.reuniones = response;
+    });
   }
 
 }
