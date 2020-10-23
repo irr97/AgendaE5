@@ -1,6 +1,6 @@
 package com.ae5.sige.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,6 @@ public class ReunionesController {
 
     @GetMapping("/Reuniones")
     public List<Reunion> findAll(){
-    	System.out.println("controller find all");
-    	Reunion reunion = new Reunion("7", "Prueba 1", "prueba guardado", "nadie","19:49", "22/10", new ArrayList<String>());
-        //reunionRep.saveReunion(reunion);
         List<Reunion> aux = reunionRep.findAll();
         System.out.println(aux.get(0));
     	return aux;
