@@ -8,6 +8,7 @@ import { ReunionesPreComponent } from './reuniones-pre/reuniones-pre.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     ReunionesComponent,
     ReunionesPreComponent,
-    MenuComponent
+    MenuComponent,
+    RegistroComponent
 
   ],
   imports: [
