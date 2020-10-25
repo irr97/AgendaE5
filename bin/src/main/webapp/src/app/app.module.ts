@@ -10,7 +10,9 @@ import { MenuComponent } from './menu/menu.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    AppComponent
+
   ],
   imports: [
     BrowserModule,
