@@ -1,4 +1,4 @@
-package com.ae5.sige.repository;
+package com.ae5.sige.Repository;
 
 import java.util.List;
 import java.util.Optional;

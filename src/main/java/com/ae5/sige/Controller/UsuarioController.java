@@ -2,9 +2,11 @@ package com.ae5.sige.Controller;
 
 import java.util.List;
 
-import com.ae5.sige.Documents.Usuarios;
+import com.ae5.sige.model.Usuario;
+
 import com.ae5.sige.Repository.UsuarioRepository;
 import com.ae5.sige.Service.UsuarioService;
+import com.ae5.sige.exception.UserNotFound;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +28,62 @@ import org.apache.commons.logging.LogFactory;
 public class UsuarioController {
 
     private static final Log LOG = LogFactory.getLog(UsuarioController.class);
-    private UsuarioService usuarioService;
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioService usuarioService;
+    //private final UsuarioRepository usuarioRepository;
 
+    @Autowired
+    /**
+     * @author ae5
+     */
+    public UsuarioController(final UsuarioService usuarioService) {
+      this.usuarioService = usuarioService;
+    }
+    /**
+     * Obtiene la contraseña del usuario mediante su dni.
+     * 
+     * @author ae5
+     */
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Usuario> getUserPassword(@RequestParam("dni") final String dni,
+    	      @RequestParam("password") final String pass) {
+
+    	    final Usuario usuario = usuarioService.getUserByDniAndPassword(dni, pass);
+    	    if (usuario != null) {
+    	      LOG.info("[SERVER] Usuario encontrado: " + usuario.getNombre());
+    	      return ResponseEntity.ok(usuario);
+    	    } else {
+    	      LOG.info("[SERVER] No se ha encontrado ningún usuario con esos datos.");
+    	      return ResponseEntity.badRequest().build();
+    	    }
+    	  }
+    
+    /**
+     * Obtiene un usuario mediante su dni.
+     * 
+     * @author e3corp
+     */
+    @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
+    //@ApiOperation(value = "Find an user", notes = "Return a user by DNI")
+
+    public ResponseEntity<Usuario> userByDni(@PathVariable final String dni) throws UserNotFound {
+      LOG.info("[SERVER] Buscando usuario: " + dni);
+      Usuario user;
+      try {
+        user = usuarioService.findByUserDni(dni);
+        LOG.info("[SERVER] Usuario encontrado.");
+      } catch (UserNotFound u) {
+        user = null;
+        LOG.error("[SERVER] Usuario no encontrado.");
+      }
+      return ResponseEntity.ok(user);
+    }
+
+    
+    /*
     @GetMapping("/Usuarios")
     public List<Usuarios> findAll(){
-        return usuarioRepository.finaAll();
+        return usuarioRepository.findAll();
     }
 
 
@@ -61,5 +113,5 @@ public class UsuarioController {
       }
     }
 
-   
+   */
 }

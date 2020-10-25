@@ -1,4 +1,4 @@
-package com.ae5.sige.service;
+package com.ae5.sige.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.ae5.sige.model.Reunion;
-import com.ae5.sige.repository.ReunionRepositoryInt;
+import com.ae5.sige.Repository.ReunionRepositoryInt;
 
 
 @Service("ReunionServiceInt")
@@ -57,7 +57,6 @@ public class ReunionService implements ReunionServiceInt{
   @Override
   public List<Reunion> findAll() {
     final Optional<List<Reunion>> reuniones = reunionRepository.findAll();
-    System.out.println(reuniones.get());
     return reuniones.get();
   }
 
@@ -81,13 +80,5 @@ public class ReunionService implements ReunionServiceInt{
   public void deleteReunion(final String userId) {
 	  reunionRepository.deleteReunion(userId);
   }
-
-
-
-
-
-
-
-
 
 }

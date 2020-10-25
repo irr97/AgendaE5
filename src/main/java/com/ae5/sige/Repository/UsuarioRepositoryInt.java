@@ -1,4 +1,4 @@
-package com.ae5.sige.repository;
+package com.ae5.sige.Repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,17 +35,17 @@ public interface UsuarioRepositoryInt {
 	  void deleteUsuario(String usuario);
 
 	  /**
-	   * Método para obtener un usuario por su id.
+	   * Método para obtener un usuario por su dni.
 	   * 
 	   * @author ae5
 	   */
-	  Optional<Usuario> findOne(String nusuario);
+	  Optional<Usuario> findOne(String dni);
 
 	  /**
-	   * Método para obtener un usuario por su nombre de usuario y contraseña.
+	   * Método para obtener un usuario por su dni y contraseña.
 	   * 
 	   * @author ae5
 	   */
-	  Usuario findBynUsuarioAndContrasena(String nusuario, String contrasena);
+	  Usuario findBynDniAndContrasena(String dni, String contrasena);
 
 }
