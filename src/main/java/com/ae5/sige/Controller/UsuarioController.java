@@ -1,11 +1,9 @@
 package com.ae5.sige.Controller;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import com.ae5.sige.model.Usuario;
-
-import com.ae5.sige.Repository.UsuarioRepository;
 import com.ae5.sige.Service.UsuarioService;
 import com.ae5.sige.exception.UserNotFound;
 
@@ -24,6 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 
 @RestController
 @RequestMapping("/Usuarios")
@@ -91,13 +90,12 @@ public class UsuarioController {
     @RequestMapping(method = RequestMethod.POST)
 
     public ResponseEntity<Usuario> registrarUsuario(@RequestBody final String usuario) {
-      final org.springframework.boot.configurationprocessor.json.JSONObject jso = new JSONObject(usuario);
+      final JSONObject jso = new JSONObject(usuario);
       final String dni = jso.getString("dni");
       final String contrasena = jso.getString("password");
 
       Usuario usuario1 = usuarioService.getUserByDniAndPassword(dni, contrasena);
       if (usuario1 == null) {
-    	String id = null;
         String nombre = null;
         String apellidos = null;
         String correo = null;
@@ -113,7 +111,7 @@ public class UsuarioController {
           correo = jso.getString("correo");
           tipo = jso.getString("tipo");
           }
-         catch (Exception j) {
+         catch (JSONException j) {
           LOG.info("[SERVER] Error en la lectura del JSON.");
           LOG.info(j.getMessage());
           return ResponseEntity.badRequest().build();
@@ -130,6 +128,22 @@ public class UsuarioController {
         return ResponseEntity.badRequest().build();
       }
     }
+    
+
+    /**
+     * Borra un usuario en funcion de su id.
+     * 
+     * @author ae5
+     */
+    @RequestMapping(value = "/{dni}", method = RequestMethod.DELETE)
+   // @ApiOperation(value = "Delete an user", notes = "Delete a user by dni")
+
+    public ResponseEntity<Void> deleteUser(@PathVariable final String dni) {
+      LOG.info("Delete user " + dni);
+      usuarioService.deleteUsuario(dni);
+      return ResponseEntity.noContent().build();
+    }
+
     
     /*
     @GetMapping("/Usuarios")
