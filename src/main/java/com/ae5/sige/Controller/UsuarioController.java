@@ -1,5 +1,6 @@
 package com.ae5.sige.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ae5.sige.model.Usuario;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @RestController
 @RequestMapping("/Usuarios")
@@ -61,7 +64,7 @@ public class UsuarioController {
     /**
      * Obtiene un usuario mediante su dni.
      * 
-     * @author e3corp
+     * @author ae5
      */
     @RequestMapping(value = "/{userDni}", method = RequestMethod.GET)
     //@ApiOperation(value = "Find an user", notes = "Return a user by DNI")
@@ -79,6 +82,54 @@ public class UsuarioController {
       return ResponseEntity.ok(user);
     }
 
+    
+    /**
+     * Registramos un usuario y guardamos ese usuario en la base de datos.
+     * 
+     * @author ae5.
+     */
+    @RequestMapping(method = RequestMethod.POST)
+
+    public ResponseEntity<Usuario> registrarUsuario(@RequestBody final String usuario) {
+      final org.springframework.boot.configurationprocessor.json.JSONObject jso = new JSONObject(usuario);
+      final String dni = jso.getString("dni");
+      final String contrasena = jso.getString("password");
+
+      Usuario usuario1 = usuarioService.getUserByDniAndPassword(dni, contrasena);
+      if (usuario1 == null) {
+    	String id = null;
+        String nombre = null;
+        String apellidos = null;
+        String correo = null;
+        String telefono = null;
+        String tipo = null;
+        ArrayList<Object> ListaReuniones = null;
+        ArrayList<Object> ListaReunionesNuevas = null;
+        try {
+          LOG.info("[SERVER] Registrando usuario...");
+          nombre = jso.getString("nombre");
+          apellidos = jso.getString("apellidos");
+          telefono = jso.getString("tel");
+          correo = jso.getString("correo");
+          tipo = jso.getString("tipo");
+          }
+         catch (Exception j) {
+          LOG.info("[SERVER] Error en la lectura del JSON.");
+          LOG.info(j.getMessage());
+          return ResponseEntity.badRequest().build();
+        }
+
+        usuario1 = new Usuario(contrasena, nombre, apellidos,dni, telefono, correo, tipo, ListaReuniones, ListaReunionesNuevas);
+        usuarioService.saveUsuario(usuario1);
+        LOG.info("[SERVER] Usuario registrado.");
+        LOG.info("[SERVER] " + usuario1.toString());
+        return ResponseEntity.ok().build();
+      } else {
+        LOG.info("[SERVER] Error: El usuario ya está registrado.");
+        LOG.info("[SERVER] " + usuario1.toString());
+        return ResponseEntity.badRequest().build();
+      }
+    }
     
     /*
     @GetMapping("/Usuarios")

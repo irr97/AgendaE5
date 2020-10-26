@@ -16,20 +16,14 @@ public class Usuario {
 	 */
 	@Id
 	private String id;
-	/**
-	 * nUsuario.
-	 * 
-	 * @author ae5
-	 */
-	@NonNull
-	private String nUsuario;
+
 	/**
 	 * Contraseña.
 	 * 
 	 * @author ae5
 	 */
 	@NonNull
-	private String Contraseña;
+	private String Contrasena;
 	/**
 	 * Nombre.
 	 * 
@@ -80,13 +74,13 @@ public class Usuario {
 	 */
 	private ArrayList<Object> ListaReunionesNuevas = new ArrayList<Object>();
 
-	public Usuario(@NonNull String nusuario, @NonNull String contraseña, String nombre, String apellidos,
+	public Usuario(@NonNull String contrasena, String nombre, String apellidos,
 			@NonNull String dNI, String telefono, String correo, String tipo, ArrayList<Object> listaReuniones,
 			ArrayList<Object> listaReunionesNuevas) {
 		super();
 		this.id = UUID.randomUUID().toString();
-		nUsuario = nusuario;
-		Contraseña = contraseña;
+	
+		Contrasena = contrasena;
 		Nombre = nombre;
 		Apellidos = apellidos;
 		DNI = dNI;
@@ -109,20 +103,12 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getUsuario() {
-		return nUsuario;
-	}
-
-	public void setUsuario(String usuario) {
-		nUsuario = usuario;
-	}
-
-	public String getContraseña() {
-		return Contraseña;
+	public String getContrasena() {
+		return Contrasena;
 	}
 
 	public void setContraseña(String contraseña) {
-		Contraseña = contraseña;
+		Contrasena = contraseña;
 	}
 
 	public String getNombre() {
@@ -189,6 +175,8 @@ public class Usuario {
 		ListaReunionesNuevas = listaReunionesNuevas;
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -203,7 +191,6 @@ public class Usuario {
 		result = prime * result + ((Telefono == null) ? 0 : Telefono.hashCode());
 		result = prime * result + ((Tipo == null) ? 0 : Tipo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nUsuario == null) ? 0 : nUsuario.hashCode());
 		return result;
 	}
 
@@ -266,17 +253,12 @@ public class Usuario {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nUsuario == null) {
-			if (other.nUsuario != null)
-				return false;
-		} else if (!nUsuario.equals(other.nUsuario))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nUsuario=" + nUsuario + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
+		return "Usuario [id=" + id + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
 				+ ", Apellidos=" + Apellidos + ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo
 				+ ", Tipo=" + Tipo + ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas="
 				+ ListaReunionesNuevas + "]";
