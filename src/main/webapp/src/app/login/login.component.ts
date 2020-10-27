@@ -32,13 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
 
-  onSubmit(){
+ public onSubmit(){
     this.submitted = true;
     this.loading = true;
     this.UsuarioService.login(this.f.dni.value, this.f.password.value)
     .subscribe(
         data => {
-           this.router.navigate(['/']);
+           this.router.navigate(['/reuniones']);
         },
             
         error => {
