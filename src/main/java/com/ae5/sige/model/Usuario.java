@@ -107,8 +107,8 @@ public class Usuario {
 		return Contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		Contrasena = contraseña;
+	public void setContrasena(String contrasena) {
+		Contrasena = contrasena;
 	}
 
 	public String getNombre() {
@@ -182,7 +182,7 @@ public class Usuario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Apellidos == null) ? 0 : Apellidos.hashCode());
-		result = prime * result + ((Contraseña == null) ? 0 : Contraseña.hashCode());
+		result = prime * result + ((Contrasena == null) ? 0 : Contrasena.hashCode());
 		result = prime * result + ((Correo == null) ? 0 : Correo.hashCode());
 		result = prime * result + ((DNI == null) ? 0 : DNI.hashCode());
 		result = prime * result + ((ListaReuniones == null) ? 0 : ListaReuniones.hashCode());
@@ -208,10 +208,10 @@ public class Usuario {
 				return false;
 		} else if (!Apellidos.equals(other.Apellidos))
 			return false;
-		if (Contraseña == null) {
-			if (other.Contraseña != null)
+		if (Contrasena == null) {
+			if (other.Contrasena != null)
 				return false;
-		} else if (!Contraseña.equals(other.Contraseña))
+		} else if (!Contrasena.equals(other.Contrasena))
 			return false;
 		if (Correo == null) {
 			if (other.Correo != null)
@@ -258,7 +258,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
+		return "Usuario [id=" + id + ", Contraseña=" + Contrasena + ", Nombre=" + Nombre
 				+ ", Apellidos=" + Apellidos + ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo
 				+ ", Tipo=" + Tipo + ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas="
 				+ ListaReunionesNuevas + "]";
