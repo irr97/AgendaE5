@@ -127,7 +127,7 @@ public class UsuarioController {
 	}
 
 	/**
-	 * Borra un usuario en funcion de su id.
+	 * Borra un usuario en funcion de su dni.
 	 * 
 	 * @author ae5
 	 */
@@ -139,7 +139,12 @@ public class UsuarioController {
 		usuarioService.deleteUsuario(dni);
 		return ResponseEntity.noContent().build();
 	}
-
+	
+	/**
+	 * actualiza un usuario en funcion de su dni.
+	 * 
+	 * @author ae5
+	 */
 	@RequestMapping(value = "/{dni}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Update usuario", notes = "Finds a dni and updates its fields")
 	public ResponseEntity<Usuario> updateUsuario(@RequestBody final String mensajerecibido,
