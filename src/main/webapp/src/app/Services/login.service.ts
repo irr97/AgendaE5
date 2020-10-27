@@ -8,18 +8,21 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class loginService {
 
   private uri = 'http://localhost:9000/AgendaE5';
   private currentUserSubject: BehaviorSubject<any>;
     public currentUser: Observable<any>;
 
-  constructor(
-    private http: HttpClient,
-    private router : Router
-  ) {}
+  constructor(private http: HttpClient,private router : Router) {
+    this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')))
+  }
 
-  public save(usuario){
+  public get currentUserValue() {
+    return this.currentUserSubject.value;
+}
+
+  /*public save(usuario){
     return this.http.post(this.uri + '/Usuarios', usuario);
 
   }
@@ -31,7 +34,7 @@ export class UsuarioService {
   public find(DNI){
     return this.http.get(this.uri + '/Usuarios/' + DNI);
   }
-
+*/
   login(usuario, password) {
     const params = new HttpParams()
         .set('dni', usuario)
