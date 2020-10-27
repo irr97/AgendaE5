@@ -41,7 +41,7 @@ public class UsuarioService implements UsuarioServiceInt {
   /**
    * @author ae5
    */
-  public Usuario findByUsernusuario(final String nusuario) {
+  public Usuario findByUserDni(final String nusuario) {
 	
 	  
     final Optional<Usuario> user = userRepository.findOne(nusuario);
@@ -95,16 +95,16 @@ public class UsuarioService implements UsuarioServiceInt {
   /**
    * @author ae5
    */
-  public void deleteUsuario(final String nusuario) {
+  public void deleteUsuario(final String dni) {
 
-    userRepository.deleteUsuario(nusuario);
+    userRepository.deleteUsuario(dni);
 
   }
 
   @Override
-  public Usuario getUserBynusuarioAndPassword(final String nusuario, final String password) {
+  public Usuario getUserByDniAndPassword(final String dni, final String password) {
 
-    final Usuario usuario = userRepository.findBynUsuarioAndContrasena(nusuario, password);
+    final Usuario usuario = userRepository.findBynDniAndContrasena(dni, password);
     return usuario;
   }
 
