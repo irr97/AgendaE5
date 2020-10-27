@@ -79,7 +79,7 @@ public class Usuario {
 			ArrayList<Object> listaReunionesNuevas) {
 		super();
 		this.id = UUID.randomUUID().toString();
-	
+		
 		Contrasena = contrasena;
 		Nombre = nombre;
 		Apellidos = apellidos;
