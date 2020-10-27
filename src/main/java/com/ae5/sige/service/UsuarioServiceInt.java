@@ -13,7 +13,7 @@ public interface UsuarioServiceInt {
 	  /**
 	   * @author ae5
 	   */
-	  Usuario findByUsernusuario(String nusuario);
+	  Usuario findByUserDni(String dni);
 
 	  /**
 	   * @author ae5
@@ -28,11 +28,11 @@ public interface UsuarioServiceInt {
 	  /**
 	   * @author ae5
 	   */
-	  void deleteUsuario(String userId);
+	  void deleteUsuario(String dni);
 
 	  /**
 	   * @author ae5
 	   */
-	  Usuario getUserBynusuarioAndPassword(String nusuario, String password);
+	  Usuario getUserByDniAndPassword(String dni, String password);
 
 }
