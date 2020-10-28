@@ -8,6 +8,8 @@ import { ReunionesPreComponent } from './reuniones-pre/reuniones-pre.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,13 +17,16 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent,
     ReunionesComponent,
     ReunionesPreComponent,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
