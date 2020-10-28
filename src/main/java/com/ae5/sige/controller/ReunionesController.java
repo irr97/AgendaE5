@@ -32,7 +32,7 @@ public class ReunionesController {
 
     @GetMapping("/Reuniones/{id}")
     public Reunion find(@PathVariable("id") String id) throws Exception{
-        return reunionRep.findByReunionId(id);
+        return reunionRep.findByReunionId(id); 
 
     }
 }

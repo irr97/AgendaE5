@@ -94,7 +94,7 @@ public class UsuarioRepository implements UsuarioRepositoryInt{
 
 	@Override
 	public Usuario findBynUsuarioAndContrasena(String nusuario, String contrasena) {
-		Usuario usuario = this.mongoOperations.findOne(new Query(Criteria.where("Usuario").is(nusuario).and("contraseña").is(contrasena)), Usuario.class);
+		Usuario usuario = this.mongoOperations.findOne(new Query(Criteria.where("DNI").is(nusuario).and("Contraseña").is(contrasena)), Usuario.class);
 		    return usuario;
 	}
 

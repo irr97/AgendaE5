@@ -80,12 +80,11 @@ public class Usuario {
 	 */
 	private ArrayList<Object> ListaReunionesNuevas = new ArrayList<Object>();
 
-	public Usuario(@NonNull String nusuario, @NonNull String contraseña, String nombre, String apellidos,
+	public Usuario( @NonNull String contraseña, String nombre, String apellidos,
 			@NonNull String dNI, String telefono, String correo, String tipo, ArrayList<Object> listaReuniones,
 			ArrayList<Object> listaReunionesNuevas) {
 		super();
 		this.id = UUID.randomUUID().toString();
-		nUsuario = nusuario;
 		Contraseña = contraseña;
 		Nombre = nombre;
 		Apellidos = apellidos;
