@@ -17,13 +17,6 @@ public class Usuario {
 	@Id
 	private String id;
 	/**
-	 * nUsuario.
-	 * 
-	 * @author ae5
-	 */
-	@NonNull
-	private String nUsuario;
-	/**
 	 * Contraseña.
 	 * 
 	 * @author ae5
@@ -108,13 +101,6 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public String getUsuario() {
-		return nUsuario;
-	}
-
-	public void setUsuario(String usuario) {
-		nUsuario = usuario;
-	}
 
 	public String getContraseña() {
 		return Contraseña;
@@ -202,7 +188,6 @@ public class Usuario {
 		result = prime * result + ((Telefono == null) ? 0 : Telefono.hashCode());
 		result = prime * result + ((Tipo == null) ? 0 : Tipo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nUsuario == null) ? 0 : nUsuario.hashCode());
 		return result;
 	}
 
@@ -265,20 +250,15 @@ public class Usuario {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nUsuario == null) {
-			if (other.nUsuario != null)
-				return false;
-		} else if (!nUsuario.equals(other.nUsuario))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nUsuario=" + nUsuario + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre
-				+ ", Apellidos=" + Apellidos + ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo
-				+ ", Tipo=" + Tipo + ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas="
-				+ ListaReunionesNuevas + "]";
+		return "Usuario [id=" + id + ", Contraseña=" + Contraseña + ", Nombre=" + Nombre + ", Apellidos=" + Apellidos
+				+ ", DNI=" + DNI + ", Telefono=" + Telefono + ", Correo=" + Correo + ", Tipo=" + Tipo
+				+ ", ListaReuniones=" + ListaReuniones + ", ListaReunionesNuevas=" + ListaReunionesNuevas + "]";
 	}
 
+	
 }

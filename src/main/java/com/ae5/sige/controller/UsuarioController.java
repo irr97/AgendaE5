@@ -187,31 +187,5 @@ public class UsuarioController {
 		}
 	}
 
-	/*
-	 * @GetMapping("/Usuarios") public List<Usuarios> findAll(){ return
-	 * usuarioRepository.findAll(); }
-	 * 
-	 * 
-	 * @PostMapping("/Usuarios") public Usuarios save(@RequestBody Usuarios
-	 * usuario){ return usuarioRepository.save(usuario); }
-	 * 
-	 * @GetMapping("/Usuarios/{DNI}") public Usuarios find(@PathVariable("DNI")
-	 * String DNI){ return usuarioRepository.findByDNI(DNI);
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(method = RequestMethod.GET)
-	 * 
-	 * public ResponseEntity<Usuarios> getUserPassword(@RequestParam("Usuario")
-	 * final String Usuario,
-	 * 
-	 * @RequestParam("contrasena") final String Contrasena) {
-	 * 
-	 * final Usuarios usuario = usuarioService.getUserByDniAndPassword(Usuario,
-	 * Contrasena); if (usuario != null) { LOG.info("[SERVER] Usuario encontrado: "
-	 * + usuario.getNombre()); return ResponseEntity.ok(usuario); } else {
-	 * LOG.info("[SERVER] No se ha encontrado ningún usuario con esos datos.");
-	 * return ResponseEntity.badRequest().build(); } }
-	 * 
-	 */
+
 }
