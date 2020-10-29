@@ -60,7 +60,7 @@ public class ReunionesController {
         return reunionService.findByReunionId(id); 
     }
     
-    @RequestMapping(value = "paciente/{dni}", method = RequestMethod.GET)
+    @RequestMapping(value = "/Reuniones/{dni}", method = RequestMethod.GET)
     /**
      * @author e3corp
      */
